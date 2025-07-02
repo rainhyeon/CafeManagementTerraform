@@ -18,3 +18,14 @@ terraform {
 provider "aws" {
   region = var.region
 }
+
+// Filename: vpc.tf
+resource "aws_vpc" "Cafe_Management_vpc_1" {
+  cidr_block           = "10.30.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+
+  tags = {
+    Name = "Cafe_Management_vpc_1"
+  }
+}
