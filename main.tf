@@ -54,7 +54,7 @@ resource "aws_internet_gateway" "Cafe_Management_igw_1" {
   vpc_id = aws_vpc.Cafe_Management_vpc_1.id
 
   tags = {
-    Name = "Cafe_Management2_igw_1"
+    Name = "Cafe_Management_igw_1"
   }
 }
 
