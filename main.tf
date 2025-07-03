@@ -366,6 +366,29 @@ resource "aws_security_group" "Cafe_Management_db_sg_1" {
   }
 }
 
+// Filename: policy.tf
+resource "aws_iam_policy" "dms_vpc_custom_policy" {
+  name        = "dms-vpc-custom-policy"
+  description = "Allow DMS to manage EC2 network interfaces"
+  
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "ec2:Describe*",
+          "ec2:CreateNetworkInterface",
+          "ec2:DeleteNetworkInterface",
+          "ec2:AttachNetworkInterface"
+        ]
+        Resource = "*"
+      }
+    ]
+  })
+}
+
+
 // Filename: iam.tf
 resource "aws_iam_role" "dms_vpc_role" {
   name = "dms-vpc-role"
@@ -387,6 +410,12 @@ resource "aws_iam_role" "dms_vpc_role" {
     Name = "dms-vpc-role"
   }
 }
+
+resource "aws_iam_role_policy_attachment" "dms_vpc_custom_attach" {
+  role       = aws_iam_role.dms_vpc_role.name
+  policy_arn = aws_iam_policy.dms_vpc_custom_policy.arn
+}
+
 
 resource "aws_iam_role" "Cafe_Management_ec2_role_1" {
   name = "Cafe_Management_ec2_role_1"
