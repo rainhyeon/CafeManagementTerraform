@@ -590,8 +590,8 @@ resource "aws_db_subnet_group" "Cafe_Management_db_subnet_group_1" {
   }
 }
 
-resource "aws_db_instance" "Cafe_Management_db_1" {
-  identifier             = "cafe-management-db-1"
+resource "aws_db_instance" "Cafe_Management_db" {
+  identifier             = "cafe-management-db"
   allocated_storage      = 20
   storage_type           = "gp2"
   engine                 = "mysql"
