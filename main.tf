@@ -738,7 +738,7 @@ resource "aws_route53_record" "Cafe_Management_www_alb" {
   }
 
   weighted_routing_policy {
-    weight = 11
+    weight = 12
   }
 
   set_identifier = "www-alb-weight-0"
