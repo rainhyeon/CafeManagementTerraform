@@ -197,7 +197,7 @@ resource "aws_route_table" "Cafe_Management_web_rt_1" {
   }
   route {
     cidr_block = "10.178.0.0/20"
-    gateway_id = "vgw-03bb2e772d6cfa9f7"
+    gateway_id = "vgw-0ee842983ae931bd6"
   }
 
 }
@@ -215,7 +215,7 @@ resource "aws_route_table" "Cafe_Management_web_rt_2" {
   }
   route {
     cidr_block = "10.178.0.0/20"
-    gateway_id = "vgw-03bb2e772d6cfa9f7"
+    gateway_id = "vgw-0ee842983ae931bd6"
   }
 
 }
