@@ -521,7 +521,7 @@ resource "aws_instance" "Cafe_Management_bastion_1" {
   key_name               = null
   subnet_id              = aws_subnet.Cafe_Management_public_subnet_1.id
   vpc_security_group_ids = [aws_security_group.Cafe_Management_bastion_sg_1.id]
-  #iam_instance_profile   = aws_iam_instance_profile.Cafe_Management_ec2_profile_1.name
+# iam_instance_profile   = aws_iam_instance_profile.Cafe_Management_ec2_profile_1.name
 
   tags = {
     Name = "Cafe_Management_bastion_1"
@@ -547,7 +547,7 @@ resource "aws_instance" "Cafe_Management_web_2" {
   key_name               = null
   subnet_id              = aws_subnet.Cafe_Management_web_subnet_2.id
   vpc_security_group_ids = [aws_security_group.Cafe_Management_web_sg_1.id]
-  iam_instance_profile   = aws_iam_instance_profile.Cafe_Management_ec2_profile_1.name
+  #iam_instance_profile   = aws_iam_instance_profile.Cafe_Management_ec2_profile_1.name
 
   tags = {
     Name = "Cafe_Management_web_2"
