@@ -662,7 +662,7 @@ output "route53_zone_id" {
 
 output "rds_endpoint" {
   description = "RDS instance endpoint"
-  value       = aws_db_instance.Cafe_Management_db_1.endpoint
+  value       = aws_db_instance.Cafe_Management_db.endpoint
 }
 
 output "bastion_public_ip" {
