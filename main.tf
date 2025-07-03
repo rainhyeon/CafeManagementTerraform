@@ -590,26 +590,26 @@ resource "aws_db_subnet_group" "Cafe_Management_db_subnet_group_1" {
   }
 }
 
-resource "aws_db_instance" "Cafe_Management_db" {
-  identifier             = "cafe-management-db"
-  allocated_storage      = 20
-  storage_type           = "gp2"
-  engine                 = "mysql"
-  engine_version         = "8.0"
-  instance_class         = "db.t3.medium"
-  db_name                = var.db_name
-  username               = var.db_username
-  password               = var.db_password
-  parameter_group_name   = aws_db_parameter_group.Cafe_Management_db_param_group_1.name
-  db_subnet_group_name   = aws_db_subnet_group.Cafe_Management_db_subnet_group_1.name
-  vpc_security_group_ids = [aws_security_group.Cafe_Management_db_sg_1.id]
-  skip_final_snapshot    = true
-  multi_az               = true
+#resource "aws_db_instance" "Cafe_Management_db" {
+#  identifier             = "cafe-management-db"
+#  allocated_storage      = 20
+#  storage_type           = "gp2"
+#  engine                 = "mysql"
+#  engine_version         = "8.0"
+#  instance_class         = "db.t3.medium"
+#  db_name                = var.db_name
+#  username               = var.db_username
+#  password               = var.db_password
+#  parameter_group_name   = aws_db_parameter_group.Cafe_Management_db_param_group_1.name
+#  db_subnet_group_name   = aws_db_subnet_group.Cafe_Management_db_subnet_group_1.name
+#  vpc_security_group_ids = [aws_security_group.Cafe_Management_db_sg_1.id]
+#  skip_final_snapshot    = true
+#  multi_az               = true
 
-  tags = {
-    Name = "Cafe_Management_db"
-  }
-}
+#  tags = {
+#    Name = "Cafe_Management_db"
+#  }
+#}
 
 // Filename: route53.tf
 resource "aws_route53_record" "Cafe_Management_www_onprem" {
@@ -660,10 +660,10 @@ output "route53_zone_id" {
   value       = aws_route53_zone.Cafe_Management_zone_1.zone_id
 }
 
-output "rds_endpoint" {
-  description = "RDS instance endpoint"
-  value       = aws_db_instance.Cafe_Management_db_1.endpoint
-}
+#output "rds_endpoint" {
+#  description = "RDS instance endpoint"
+#  value       = aws_db_instance.Cafe_Management_db_1.endpoint
+#}
 
 output "bastion_public_ip" {
   description = "Public IP of bastion host"
