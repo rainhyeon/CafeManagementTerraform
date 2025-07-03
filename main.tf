@@ -367,6 +367,27 @@ resource "aws_security_group" "Cafe_Management_db_sg_1" {
 }
 
 // Filename: iam.tf
+resource "aws_iam_role" "dms_vpc_role" {
+  name = "dms-vpc-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Principal = {
+          Service = "dms.amazonaws.com"
+        }
+        Action = "sts:AssumeRole"
+      }
+    ]
+  })
+
+  tags = {
+    Name = "dms-vpc-role"
+  }
+}
+
 resource "aws_iam_role" "Cafe_Management_ec2_role_1" {
   name = "Cafe_Management_ec2_role_1"
 
