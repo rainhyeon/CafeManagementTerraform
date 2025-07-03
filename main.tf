@@ -390,6 +390,46 @@ resource "aws_iam_policy" "dms_vpc_custom_policy" {
 
 
 // Filename: iam.tf
+
+resource "aws_iam_role" "dms_assessment_role" {
+  name = "DMSAssessmentRole"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [{
+      Effect    = "Allow",
+      Principal = { Service = "dms.amazonaws.com" },
+      Action    = "sts:AssumeRole"
+    }]
+  })
+}
+
+resource "aws_iam_policy" "dms_assessment_policy" {
+  name = "DMSAssessmentPolicy"
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow",
+        Action = ["s3:*"],
+        Resource = ["arn:aws:s3:::liftify-assessment-*", "arn:aws:s3:::liftify-assessment-*/*"]
+      },
+      {
+        Effect = "Allow",
+        Action = ["dms:*"],
+        Resource = "*"
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "attach" {
+  role       = aws_iam_role.dms_assessment_role.name
+  policy_arn = aws_iam_policy.dms_assessment_policy.arn
+}
+
+
 resource "aws_iam_role" "dms_vpc_role" {
   name = "dms-vpc-role"
 
