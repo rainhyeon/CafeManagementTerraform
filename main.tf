@@ -515,56 +515,56 @@ resource "aws_lb_listener" "Cafe_Management_listener_443_1" {
 }
 
 // Filename: ec2.tf
-resource "aws_instance" "Cafe_Management_bastion_1" {
-  ami                    = "ami-0c593c3690c32e925"
-  instance_type          = "t3.medium"
-  key_name               = null
-  subnet_id              = aws_subnet.Cafe_Management_public_subnet_1.id
-  vpc_security_group_ids = [aws_security_group.Cafe_Management_bastion_sg_1.id]
- iam_instance_profile   = aws_iam_instance_profile.Cafe_Management_ec2_profile_1.name
+#resource "aws_instance" "Cafe_Management_bastion_1" {
+#  ami                    = "ami-0c593c3690c32e925"
+#  instance_type          = "t3.medium"
+#  key_name               = null
+#  subnet_id              = aws_subnet.Cafe_Management_public_subnet_1.id
+#  vpc_security_group_ids = [aws_security_group.Cafe_Management_bastion_sg_1.id]
+# iam_instance_profile   = aws_iam_instance_profile.Cafe_Management_ec2_profile_1.name
 
-  tags = {
-    Name = "Cafe_Management_bastion_1"
-  }
-}
+ # tags = {
+ #   Name = "Cafe_Management_bastion_1"
+ # }
+#}
 
-resource "aws_instance" "Cafe_Management_web_1" {
-  ami                    = "ami-08943a151bd468f4e"
-  instance_type          = "t3.medium"
-  key_name               = null
-  subnet_id              = aws_subnet.Cafe_Management_web_subnet_1.id
-  vpc_security_group_ids = [aws_security_group.Cafe_Management_web_sg_1.id]
-  iam_instance_profile   = aws_iam_instance_profile.Cafe_Management_ec2_profile_1.name
+#resource "aws_instance" "Cafe_Management_web_1" {
+#  ami                    = "ami-08943a151bd468f4e"
+#  instance_type          = "t3.medium"
+#  key_name               = null
+#  subnet_id              = aws_subnet.Cafe_Management_web_subnet_1.id
+#  vpc_security_group_ids = [aws_security_group.Cafe_Management_web_sg_1.id]
+#  iam_instance_profile   = aws_iam_instance_profile.Cafe_Management_ec2_profile_1.name
 
-  tags = {
-    Name = "Cafe_Management_web_1"
-  }
-}
+#  tags = {
+#    Name = "Cafe_Management_web_1"
+#  }
+#}
 
-resource "aws_instance" "Cafe_Management_web_2" {
-  ami                    = "ami-08943a151bd468f4e"
-  instance_type          = "t3.medium"
-  key_name               = null
-  subnet_id              = aws_subnet.Cafe_Management_web_subnet_2.id
-  vpc_security_group_ids = [aws_security_group.Cafe_Management_web_sg_1.id]
-  iam_instance_profile   = aws_iam_instance_profile.Cafe_Management_ec2_profile_1.name
+#resource "aws_instance" "Cafe_Management_web_2" {
+#  ami                    = "ami-08943a151bd468f4e"
+#  instance_type          = "t3.medium"
+#  key_name               = null
+#  subnet_id              = aws_subnet.Cafe_Management_web_subnet_2.id
+#  vpc_security_group_ids = [aws_security_group.Cafe_Management_web_sg_1.id]
+#  iam_instance_profile   = aws_iam_instance_profile.Cafe_Management_ec2_profile_1.name
 
-  tags = {
-    Name = "Cafe_Management_web_2"
-  }
-}
+#  tags = {
+#    Name = "Cafe_Management_web_2"
+#  }
+#}
 
-resource "aws_lb_target_group_attachment" "Cafe_Management_tg_attachment_1" {
-  target_group_arn = aws_lb_target_group.Cafe_Management_tg_1.arn
-  target_id        = aws_instance.Cafe_Management_web_1.id
-  port             = 80
-}
+#resource "aws_lb_target_group_attachment" "Cafe_Management_tg_attachment_1" {
+#  target_group_arn = aws_lb_target_group.Cafe_Management_tg_1.arn
+#  target_id        = aws_instance.Cafe_Management_web_1.id
+#  port             = 80
+#}
 
-resource "aws_lb_target_group_attachment" "Cafe_Management_tg_attachment_2" {
-  target_group_arn = aws_lb_target_group.Cafe_Management_tg_1.arn
-  target_id        = aws_instance.Cafe_Management_web_2.id
-  port             = 80
-}
+#resource "aws_lb_target_group_attachment" "Cafe_Management_tg_attachment_2" {
+#  target_group_arn = aws_lb_target_group.Cafe_Management_tg_1.arn
+#  target_id        = aws_instance.Cafe_Management_web_2.id
+#  port             = 80
+#}
 
 // Filename: rds.tf
 resource "aws_db_parameter_group" "Cafe_Management_db_param_group_1" {
@@ -665,8 +665,8 @@ output "rds_endpoint" {
   value       = aws_db_instance.Cafe_Management_db_1.endpoint
 }
 
-output "bastion_public_ip" {
-  description = "Public IP of bastion host"
-  value       = aws_instance.Cafe_Management_bastion_1.public_ip
-}
+#output "bastion_public_ip" {
+#  description = "Public IP of bastion host"
+#  value       = aws_instance.Cafe_Management_bastion_1.public_ip
+#}
 
