@@ -46,7 +46,7 @@ resource "aws_vpc" "Cafe_Management_vpc_1" {
   enable_dns_support   = true
 
   tags = {
-    Name = "Cafe_Management2_vpc_1"
+    Name = "Cafe_Management_vpc_1"
   }
 }
 
@@ -54,7 +54,7 @@ resource "aws_internet_gateway" "Cafe_Management_igw_1" {
   vpc_id = aws_vpc.Cafe_Management_vpc_1.id
 
   tags = {
-    Name = "Cafe_Management2_igw_1"
+    Name = "Cafe_Management_igw_1"
   }
 }
 
@@ -69,7 +69,7 @@ resource "aws_subnet" "Cafe_Management_public_subnet_1" {
   depends_on = [aws_internet_gateway.Cafe_Management_igw_1]
 
   tags = {
-    Name = "Cafe_Management2_public_subnet_1"
+    Name = "Cafe_Management_public_subnet_1"
   }
 }
 
@@ -83,7 +83,7 @@ resource "aws_subnet" "Cafe_Management_public_subnet_2" {
   depends_on = [aws_internet_gateway.Cafe_Management_igw_1]
 
   tags = {
-    Name = "Cafe_Management2_public_subnet_2"
+    Name = "Cafe_Management_public_subnet_2"
   }
 }
 
