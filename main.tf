@@ -367,40 +367,40 @@ resource "aws_security_group" "Cafe_Management_db_sg_1" {
 }
 
 // Filename: iam.tf
-resource "aws_iam_role" "Cafe_Management_ec2_role_1" {
-  name = "Cafe_Management_ec2_role_1"
+#resource "aws_iam_role" "Cafe_Management_ec2_role_1" {
+#  name = "Cafe_Management_ec2_role_1"
 
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Principal = {
-          Service = "ec2.amazonaws.com"
-        }
-      }
-    ]
-  })
+#  assume_role_policy = jsonencode({
+#    Version = "2012-10-17"
+#    Statement = [
+#      {
+#        Action = "sts:AssumeRole"
+#        Effect = "Allow"
+#        Principal = {
+#          Service = "ec2.amazonaws.com"
+#        }
+#      }
+#    ]
+#  })
 
-  tags = {
-    Name = "Cafe_Management_ec2_role_1"
-  }
-}
+#  tags = {
+#    Name = "Cafe_Management_ec2_role_1"
+#  }
+#}
 
-resource "aws_iam_role_policy_attachment" "Cafe_Management_ssm_policy_1" {
-  role       = aws_iam_role.Cafe_Management_ec2_role_1.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
-}
+#resource "aws_iam_role_policy_attachment" "Cafe_Management_ssm_policy_1" {
+#  role       = aws_iam_role.Cafe_Management_ec2_role_1.name
+#  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+#}
 
-resource "aws_iam_instance_profile" "Cafe_Management_ec2_profile_1" {
-  name = "Cafe_Management_ec2_profile_1"
-  role = aws_iam_role.Cafe_Management_ec2_role_1.name
+#resource "aws_iam_instance_profile" "Cafe_Management_ec2_profile_1" {
+#  name = "Cafe_Management_ec2_profile_1"
+#  role = aws_iam_role.Cafe_Management_ec2_role_1.name
 
-  tags = {
-    Name = "Cafe_Management_ec2_profile_1"
-  }
-}
+#  tags = {
+#    Name = "Cafe_Management_ec2_profile_1"
+#  }
+#}
 
 // Filename: acm.tf
 resource "aws_acm_certificate" "Cafe_Management_cert_1" {
@@ -521,7 +521,7 @@ resource "aws_instance" "Cafe_Management_bastion_1" {
   key_name               = null
   subnet_id              = aws_subnet.Cafe_Management_public_subnet_1.id
   vpc_security_group_ids = [aws_security_group.Cafe_Management_bastion_sg_1.id]
-  iam_instance_profile   = aws_iam_instance_profile.Cafe_Management_ec2_profile_1.name
+  #iam_instance_profile   = aws_iam_instance_profile.Cafe_Management_ec2_profile_1.name
 
   tags = {
     Name = "Cafe_Management_bastion_1"
@@ -534,7 +534,7 @@ resource "aws_instance" "Cafe_Management_web_1" {
   key_name               = null
   subnet_id              = aws_subnet.Cafe_Management_web_subnet_1.id
   vpc_security_group_ids = [aws_security_group.Cafe_Management_web_sg_1.id]
-  iam_instance_profile   = aws_iam_instance_profile.Cafe_Management_ec2_profile_1.name
+  #iam_instance_profile   = aws_iam_instance_profile.Cafe_Management_ec2_profile_1.name
 
   tags = {
     Name = "Cafe_Management_web_1"
