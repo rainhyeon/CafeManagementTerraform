@@ -195,6 +195,11 @@ resource "aws_route_table" "Cafe_Management_web_rt_1" {
   tags = {
     Name = "Cafe_Management_web_rt_1"
   }
+  route {
+    cidr_block = "10.178.0.0/20"
+    gateway_id = "vgw-0ee842983ae931bd6"
+  }
+
 }
 
 resource "aws_route_table" "Cafe_Management_web_rt_2" {
@@ -208,6 +213,11 @@ resource "aws_route_table" "Cafe_Management_web_rt_2" {
   tags = {
     Name = "Cafe_Management_web_rt_2"
   }
+  route {
+    cidr_block = "10.178.0.0/20"
+    gateway_id = "vgw-0ee842983ae931bd6"
+  }
+
 }
 
 resource "aws_route_table" "Cafe_Management_db_rt_1" {
@@ -710,7 +720,7 @@ resource "aws_route53_record" "Cafe_Management_www_onprem" {
   records = ["34.22.91.176"]
 
   weighted_routing_policy {
-    weight = 100
+    weight = 90
   }
 
   set_identifier = "www-onprem-weight-225"
@@ -728,7 +738,7 @@ resource "aws_route53_record" "Cafe_Management_www_alb" {
   }
 
   weighted_routing_policy {
-    weight = 0
+    weight = 10
   }
 
   set_identifier = "www-alb-weight-0"
