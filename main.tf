@@ -720,7 +720,7 @@ resource "aws_route53_record" "Cafe_Management_www_onprem" {
   records = ["34.22.91.176"]
 
   weighted_routing_policy {
-    weight = 90
+    weight = 100
   }
 
   set_identifier = "www-onprem-weight-225"
@@ -738,7 +738,7 @@ resource "aws_route53_record" "Cafe_Management_www_alb" {
   }
 
   weighted_routing_policy {
-    weight = 10
+    weight = 0
   }
 
   set_identifier = "www-alb-weight-0"
